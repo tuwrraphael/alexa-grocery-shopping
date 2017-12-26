@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BillaSkill.Billa;
+using BillaSkill.Impl;
+using BillaSkill.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +27,8 @@ namespace BillaSkill
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<ILieferant, BillaService>();
+            services.AddTransient<IWarenFormatter, WarenFormatter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
