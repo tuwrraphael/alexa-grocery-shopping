@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BillaSkill.Billa;
 using BillaSkill.Impl;
+using BillaSkill.Models;
 using BillaSkill.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,11 @@ namespace BillaSkill
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            new DbAccess(new DbConnectionOptions()
+            {
+                DB_KEY = Configuration["DB_KEY"],
+                DB_URI = Configuration["DB_URI"]
+            }).InitializeDb().Wait();
         }
 
         public IConfiguration Configuration { get; }
@@ -29,6 +35,9 @@ namespace BillaSkill
             services.AddMvc();
             services.AddTransient<ILieferant, BillaService>();
             services.AddTransient<IWarenFormatter, WarenFormatter>();
+            services.Configure<DbConnectionOptions>(Configuration);
+            services.AddTransient<IDbAccess, DbAccess>();
+            services.AddTransient<IWarenkorbRepository, WarenkorbRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

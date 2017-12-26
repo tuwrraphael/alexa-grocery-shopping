@@ -8,7 +8,8 @@
                 Marke = tile.data.brand,
                 Name = tile.data.name,
                 Preis = tile.data.price.final,
-                Menge = tile.data.grammage
+                Menge = tile.data.grammage,
+                LieferantenID = tile.data.articleId
             };
         }
     }

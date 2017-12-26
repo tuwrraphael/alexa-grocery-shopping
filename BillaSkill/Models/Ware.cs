@@ -11,5 +11,6 @@ namespace BillaSkill.Models
         public string Marke { get; set; }
         public float Preis { get; set; }
         public string Menge { get; set; }
+        public string LieferantenID { get; set; }
     }
 }
