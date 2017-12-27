@@ -86,7 +86,13 @@ namespace BillaSkill.Controllers
                             var hinzu = suche.Waren[suche.Position];
                             await warenkorbRepository.WareHinzufuegenAsync(hinzu, input.Session.User.UserId);
                             await sucheRepository.DeleteSucheAsync(input.Session.SessionId);
-                            return ResponseBuilder.Tell($"{hinzu.Name}, wurde hinzugefügt.");
+                            return ResponseBuilder.Ask($"{hinzu.Name} wurde hinzugefügt. Was soll ich jetzt Suchen?", new Reprompt()
+                            {
+                                OutputSpeech = new PlainTextOutputSpeech()
+                                {
+                                    Text = $"Was soll ich als nächstes Suchen?"
+                                }
+                            });
                         }
                     case "AMAZON.NoIntent":
                         await sucheRepository.DeleteSucheAsync(input.Session.SessionId);
