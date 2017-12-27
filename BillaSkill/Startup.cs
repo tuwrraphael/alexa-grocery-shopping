@@ -38,6 +38,7 @@ namespace BillaSkill
             services.Configure<DbConnectionOptions>(Configuration);
             services.AddTransient<IDbAccess, DbAccess>();
             services.AddTransient<IWarenkorbRepository, WarenkorbRepository>();
+            services.AddTransient<ISucheRepository, SucheRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

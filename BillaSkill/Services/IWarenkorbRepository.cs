@@ -5,6 +5,7 @@ namespace BillaSkill.Services
 {
     public interface IWarenkorbRepository
     {
-        Task<Warenkorb> WareHinzufuegen(Ware ware, string userId);
+        Task<Warenkorb> WareHinzufuegenAsync(Ware ware, string userId);
+        Task<Warenkorb> GetForUserAsync(string userId);
     }
 }

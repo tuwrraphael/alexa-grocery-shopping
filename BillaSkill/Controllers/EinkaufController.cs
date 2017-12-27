@@ -25,7 +25,7 @@ namespace BillaSkill.Controllers
 
         [HttpPost]
         public async Task<Warenkorb> Example() {
-            return await repository.WareHinzufuegen(new Ware()
+            return await repository.WareHinzufuegenAsync(new Ware()
             {
                 LieferantenID = "2123",
                 Marke = "Coca Cola",

@@ -13,6 +13,7 @@ namespace BillaSkill.Impl
         private DbConnectionOptions options;
         public const string DBName = "billa_alexa";
         public const string WarenkorbCollectionName = "WarenkorbCollection";
+        public const string SucheCollectionName = "SucheCollection";
         public DbAccess(IOptions<DbConnectionOptions> optionsAccessor)
         {
             options = optionsAccessor.Value;
@@ -35,6 +36,8 @@ namespace BillaSkill.Impl
             await client.CreateDatabaseIfNotExistsAsync(new Database { Id = DBName });
             await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DBName),
                 new DocumentCollection { Id = WarenkorbCollectionName });
+            await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DBName),
+                new DocumentCollection { Id = SucheCollectionName });
             return client;
         }
 

@@ -9,5 +9,8 @@ namespace BillaSkill.Services
     public interface IWarenFormatter
     {
         string Format(Ware ware);
+        string Format(WarenkorbEintrag ware);
+        string Format(Warenkorb ware);
+        string Marken(Ware[] ware);
     }
 }

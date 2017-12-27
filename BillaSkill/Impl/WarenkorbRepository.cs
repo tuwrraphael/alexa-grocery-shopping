@@ -15,7 +15,14 @@ namespace BillaSkill.Impl
             this.dbAccess = dbAccess;
         }
 
-        public async Task<Warenkorb> WareHinzufuegen(Ware ware, string userId)
+        public async Task<Warenkorb> GetForUserAsync(string userId)
+        {
+            var client = dbAccess.GetClient();
+            var warenKorb = client.CreateDocumentQuery<Warenkorb>(dbAccess.GetWarenkorbCollectionUri()).Where(p => p.UserId == userId).ToArray().FirstOrDefault();
+            return warenKorb;
+        }
+
+        public async Task<Warenkorb> WareHinzufuegenAsync(Ware ware, string userId)
         {
             var client = dbAccess.GetClient();
             var warenKorb = client.CreateDocumentQuery<Warenkorb>(dbAccess.GetWarenkorbCollectionUri()).Where(p => p.UserId == userId).ToArray().FirstOrDefault();
