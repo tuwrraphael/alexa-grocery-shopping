@@ -20,7 +20,7 @@ namespace BillaSkill.Controllers
         [HttpGet]
         public async Task<Ware[]> Search(string term)
         {
-            return await lieferant.SearchAsync(term);
+            return await lieferant.SearchAsync(term, "00-2808");
         }
 
         [HttpPost]

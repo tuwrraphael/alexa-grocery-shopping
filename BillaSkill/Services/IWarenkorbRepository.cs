@@ -7,5 +7,6 @@ namespace BillaSkill.Services
     {
         Task<Warenkorb> WareHinzufuegenAsync(Ware ware, string userId);
         Task<Warenkorb> GetForUserAsync(string userId);
+        Task ClearAsync(string userId);
     }
 }

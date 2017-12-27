@@ -36,6 +36,7 @@ namespace BillaSkill
             services.AddTransient<ILieferant, BillaService>();
             services.AddTransient<IWarenFormatter, WarenFormatter>();
             services.Configure<DbConnectionOptions>(Configuration);
+            services.Configure<LieferantCredentials>(Configuration);
             services.AddTransient<IDbAccess, DbAccess>();
             services.AddTransient<IWarenkorbRepository, WarenkorbRepository>();
             services.AddTransient<ISucheRepository, SucheRepository>();

@@ -15,6 +15,17 @@ namespace BillaSkill.Impl
             this.dbAccess = dbAccess;
         }
 
+        public async Task ClearAsync(string userId)
+        {
+            var client = dbAccess.GetClient();
+            var wk = client.CreateDocumentQuery<Warenkorb>(UriFactory.CreateDocumentCollectionUri(DbAccess.DBName, DbAccess.WarenkorbCollectionName))
+                .Where(p => p.UserId == userId);
+            foreach (var s in wk)
+            {
+                await client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(DbAccess.DBName, DbAccess.WarenkorbCollectionName, s.Id));
+            }
+        }
+
         public async Task<Warenkorb> GetForUserAsync(string userId)
         {
             var client = dbAccess.GetClient();
