@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Alexa.NET;
@@ -9,7 +8,6 @@ using Alexa.NET.Response;
 using BillaSkill.Models;
 using BillaSkill.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace BillaSkill.Controllers
 {
@@ -20,19 +18,19 @@ namespace BillaSkill.Controllers
         private readonly IWarenFormatter warenFormatter;
         private readonly IWarenkorbRepository warenkorbRepository;
         private readonly ISucheRepository sucheRepository;
-        private readonly LieferantCredentials credentials;
+        private readonly IUserRepository userRepository;
 
         public SkillController(ILieferant lieferant,
             IWarenFormatter warenFormatter,
             IWarenkorbRepository warenkorbRepository,
             ISucheRepository sucheRepository,
-            IOptions<LieferantCredentials> credentialAccessor)
+            IUserRepository userRepository)
         {
             this.lieferant = lieferant;
             this.warenFormatter = warenFormatter;
             this.warenkorbRepository = warenkorbRepository;
             this.sucheRepository = sucheRepository;
-            credentials = credentialAccessor.Value;
+            this.userRepository = userRepository;
         }
         private static Random random = new Random();
         private static string RandomInsert(string str)
@@ -46,8 +44,12 @@ namespace BillaSkill.Controllers
         }
 
         [HttpPost]
-        public async Task<SkillResponse> Post([FromBody]SkillRequest input)
+        public async Task<SkillResponse> Post([FromBody]SkillRequest input, string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                return ResponseBuilder.Tell($"Servicekonfiguration muss geändert werden.");
+            }
             var requesttype = input.GetRequestType();
             if (requesttype == typeof(IntentRequest))
             {
@@ -61,7 +63,7 @@ namespace BillaSkill.Controllers
                         {
                             return ResponseBuilder.Tell($"Ich weiß nicht wie ich das suchen soll.");
                         }
-                        var waren = await lieferant.SearchAsync(suchbegriff, credentials.L_STOREID);
+                        var waren = await lieferant.SearchAsync(suchbegriff, (await userRepository.GetAsync(key)).StoreId);
                         if (waren.Length == 0)
                         {
                             return ResponseBuilder.Tell($"Ich glaube {suchbegriff} gibt es beim Billa nicht.");
@@ -131,7 +133,7 @@ namespace BillaSkill.Controllers
                             return ResponseBuilder.Tell("Du hast nichts in deinem Warenkorb.");
                         }else
                         {
-                            await lieferant.WarenkorbErstellenAsync(credentials, korb);
+                            await lieferant.WarenkorbErstellenAsync(await userRepository.GetAsync(key), korb);
                             await warenkorbRepository.ClearAsync(input.Session.User.UserId);
                             var anzahl = korb.Waren.Length == 1 ? "wurde ein" : $"wurden {korb.Waren.Length}";
                             return ResponseBuilder.Tell($"Es {anzahl} Artikel an den Billa Onlineshop gesendet.");

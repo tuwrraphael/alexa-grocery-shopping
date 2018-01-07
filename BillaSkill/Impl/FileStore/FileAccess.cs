@@ -57,7 +57,7 @@ namespace BillaSkill.Impl.FileStore
         public async Task<string> SaveAsync<T>(string id, string collection, T t)
         {
             var fileInfo = provider.GetFileInfo($"{id}-{collection}.json");
-            using (var stream = new FileStream(fileInfo.PhysicalPath, FileMode.OpenOrCreate, System.IO.FileAccess.Write))
+            using (var stream = new FileStream(fileInfo.PhysicalPath, FileMode.Create, FileAccess.Write))
                 using(var writer = new StreamWriter(stream))
             {
                 var str = JsonConvert.SerializeObject(t);

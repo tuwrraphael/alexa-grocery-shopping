@@ -45,10 +45,12 @@ namespace BillaSkill
             services.AddMvc();
             services.AddTransient<ILieferant, BillaService>();
             services.AddTransient<IWarenFormatter, WarenFormatter>();
-            services.Configure<DbConnectionOptions>(Configuration);
-            services.Configure<LieferantCredentials>(Configuration);
+            services.Configure<AzureAesKeyOptions>(Configuration);
+            services.AddTransient<IAESKeyProvider, AzureAESKeyProvider>();
+            services.AddTransient<ICredentialEncryption, AesCredentialEncryption>();
             if (UseCosmosDb)
             {
+                services.Configure<DbConnectionOptions>(Configuration);
                 new DbAccess(new DbConnectionOptions()
                 {
                     DB_KEY = Configuration["DB_KEY"],
@@ -68,6 +70,7 @@ namespace BillaSkill
                 services.AddSingleton<IFileAccess>(access);
                 services.AddTransient<ISucheRepository, FileStoreSucheRepository>();
                 services.AddTransient<IWarenkorbRepository, FileStoreWarenkorbRepository>();
+                services.AddTransient<IUserRepository, FileStoreUserRepository>();
             }
         }
 

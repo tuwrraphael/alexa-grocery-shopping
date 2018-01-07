@@ -15,6 +15,13 @@ namespace BillaSkill.Billa
 {
     public class BillaService : ILieferant
     {
+        private readonly ICredentialEncryption credentialEncryption;
+
+        public BillaService(ICredentialEncryption credentialEncryption)
+        {
+            this.credentialEncryption = credentialEncryption;
+        }
+
         public async Task<Ware[]> SearchAsync(string term, string storeId)
         {
             var client = new HttpClient();
@@ -57,13 +64,14 @@ namespace BillaSkill.Billa
             return JObject.Parse(resText);
         }
 
-        public async Task WarenkorbErstellenAsync(LieferantCredentials credentials, Warenkorb warenkorb)
+        public async Task WarenkorbErstellenAsync(User user, Warenkorb warenkorb)
         {
             CookieContainer cookies = new CookieContainer();
             HttpClientHandler handler = new HttpClientHandler();
             handler.CookieContainer = cookies;
             var client = new HttpClient(handler);
-            var cartId = await GetCartId(credentials.L_MAIL, credentials.L_PASSWORD, client, cookies);
+            var creds = await credentialEncryption.Decrypt(user.Credentials);
+            var cartId = await GetCartId(creds.L_MAIL, creds.L_PASSWORD, client, cookies);
             foreach(var eintrag in warenkorb.Waren)
             {
                 var info = await GetProductInfo(client, eintrag.Ware);

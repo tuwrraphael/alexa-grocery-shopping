@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/BillaSkill/wwwroot/App_Data/raphael-User.json
+/BillaSkill/wwwroot/App_Data
