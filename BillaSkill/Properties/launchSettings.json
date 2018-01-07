@@ -12,9 +12,7 @@
       "commandName": "IISExpress",
       "launchUrl": "api/values",
       "environmentVariables": {
-        "DB_URI": "https://billa-alexa.documents.azure.com:443/",
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DB_KEY": "ubhJ1iU2VENkULPCXJgWfR982eBByCKeMT7dzcsO2piRj5AOdrREVXhzhCklWKhfdKz0dhyzmB6dcSU9pel6NA=="
       }
     },
     "BillaSkill": {

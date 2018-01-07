@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Threading.Tasks;
 
-namespace BillaSkill.Impl
+namespace BillaSkill.Impl.CosmosDb
 {
     public class DbAccess : IDbAccess
     {

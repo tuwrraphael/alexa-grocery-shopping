@@ -4,7 +4,7 @@ using Microsoft.Azure.Documents.Client;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BillaSkill.Impl
+namespace BillaSkill.Impl.CosmosDb
 {
     public class WarenkorbRepository : IWarenkorbRepository
     {
