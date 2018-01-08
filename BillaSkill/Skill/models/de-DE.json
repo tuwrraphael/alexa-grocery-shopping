@@ -266,6 +266,14 @@
             {
               "name": {
                 "value": "Essiggurken",
+                "synonyms": [
+                  "Essiggurkerl"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Felix Essiggurkerl",
                 "synonyms": []
               }
             },
