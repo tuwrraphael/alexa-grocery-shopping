@@ -1,0 +1,436 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "billa",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "WarenkorbAuflisten",
+          "samples": [
+            "Was ist in meinem Billa Warenkorb",
+            "Liste meinen Billa Warenkorb auf",
+            "Liste meinen Warenkorb auf",
+            "Was ist in meinem Warenkorb",
+            "Was habe ich bisher eingekauft",
+            "Was habe ich bisher ausgesucht",
+            "was ich bisher ausgesucht habe"
+          ]
+        },
+        {
+          "name": "WarenkorbErstellen",
+          "samples": [
+            "Warenkorb in den Billa Onlineshop übertragen",
+            "Waren zum Billa onlineshop hinzufügen",
+            "Warenkorb an Billa onlineshop senden"
+          ]
+        },
+        {
+          "name": "Warensuche",
+          "slots": [
+            {
+              "name": "Suchbegriff",
+              "type": "LEBENSMITTEL"
+            }
+          ],
+          "samples": [
+            "Suche beim Billa nach {Suchbegriff}",
+            "Schau ob es beim Billa {Suchbegriff} gibt",
+            "gibt es {Suchbegriff} beim billa"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Öl",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Maiskeimöl",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Coca Cola",
+                "synonyms": [
+                  "Cola"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Taschentücher",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Nutella",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Marmelade",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Croissant",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Semmel",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Schinken",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Toastschinken",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Toastbrot",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Gouda",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Käse",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Klopapier",
+                "synonyms": [
+                  "WC-Papier"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Küchenrolle",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Alufolie",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Erdäpfel",
+                "synonyms": [
+                  "Kartoffel"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Eier",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Freilandeier",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Thunfisch",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Butter",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Mazola Maiskeimöl",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Streichgenuss",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Sugo",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "pesto",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "pesto rucola",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Spaghetti",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Spinat",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Reis",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Basmati Reis",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Salami",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Gurke",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Essiggurken",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Tomate",
+                "synonyms": [
+                  "Paradeiser"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Banane",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Beinschinken",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Honigkrustenschinken",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Red Bull",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Äpfel",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Birnen",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Avocado",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Zitronen",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Limetten",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Zwiebel",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Champions",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Brokkoli",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Karfiol",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Bier",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Wieselburger",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Ottakringer",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Dallmayr Capsa",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Mozzarella",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Schweinesteak",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Faschiertes",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Dallmayr Prodomo",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Blätterteig",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Backofenschinken",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Haussalami",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Pfeffer",
+                "synonyms": []
+              }
+            }
+          ],
+          "name": "LEBENSMITTEL"
+        }
+      ]
+    }
+  }
+}
