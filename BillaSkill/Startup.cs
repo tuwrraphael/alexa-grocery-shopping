@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using BillaSkill.Billa;
 using BillaSkill.Impl;
 using BillaSkill.Impl.CosmosDb;
 using BillaSkill.Impl.FileStore;
 using BillaSkill.Models;
 using BillaSkill.Services;
+using FileStore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -63,11 +63,11 @@ namespace BillaSkill
             else
             {
                 var path = Path.Combine(HostingEnvironment.WebRootPath, "App_Data");
-                new FileStoreAccess(null, path).InitializeAsync().Wait();
+                new FileStore.FileStore(null, path).InitializeAsync().Wait();
                 var provider = new PhysicalFileProvider(path);
-                var access = new FileStoreAccess(provider, path);
+                var access = new FileStore.FileStore(provider, path);
                 services.AddSingleton<IFileProvider>(provider);
-                services.AddSingleton<IFileAccess>(access);
+                services.AddSingleton<IFileStore>(access);
                 services.AddTransient<ISucheRepository, FileStoreSucheRepository>();
                 services.AddTransient<IWarenkorbRepository, FileStoreWarenkorbRepository>();
                 services.AddTransient<IUserRepository, FileStoreUserRepository>();
