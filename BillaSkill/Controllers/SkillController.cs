@@ -143,14 +143,20 @@ namespace BillaSkill.Controllers
                         await sucheRepository.DeleteSucheAsync(input.Session.SessionId);
                         return ResponseBuilder.Tell("Wird abgebrochen.");
                     case "AMAZON.HelpIntent":
-                        return ResponseBuilder.Empty();
+                        return ResponseBuilder.Ask($"Sag zum Beispiel: Suche nach Fischstäbchen. Meinen Warenkorb auflisten. Oder Warenkorb in den Billa Onlineshop übertragen.", new Reprompt()
+                        {
+                            OutputSpeech = new PlainTextOutputSpeech()
+                            {
+                                Text = $"Was kann ich für dich tun?"
+                            }
+                        });
                     default:
                         return ResponseBuilder.Tell("Ich weiß nicht ob es das beim Billa gibt.");
                 }
             }
             else if (requesttype == typeof(LaunchRequest))
             {
-                return ResponseBuilder.Ask($"Billa Onlineshop. Du kannst nach Waren suchen und zu deinem Warenkorb hinzufügen.", new Reprompt()
+                return ResponseBuilder.Ask($"Billa Onlineshop.", new Reprompt()
                 {
                     OutputSpeech = new PlainTextOutputSpeech()
                     {
