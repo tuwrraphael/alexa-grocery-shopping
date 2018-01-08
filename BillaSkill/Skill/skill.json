@@ -1,0 +1,17 @@
+{
+  "skillManifest": {
+    "publishingInformation": {
+      "locales": {
+        "locales": {
+          "de-DE": {
+            "name": "billa"
+          }
+        },
+        "isAvailableWorldwide": true
+      },
+      "apis": {
+        "custom": {}
+      },
+      "manifestVersion": "1.0"
+    }
+}
