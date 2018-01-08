@@ -70,7 +70,7 @@ namespace BillaSkill.Controllers
                         }
                         await sucheRepository.SucheZwischenSpeichernAsync(waren, input.Session.SessionId);
                         var ware = warenFormatter.Format(waren[0]);
-                        return ResponseBuilder.Ask($"Ich habe {(waren.Length == 1 ? "einen" : $"{waren.Length}")} Artikel gefunden. Möchtest du {ware}?", new Reprompt()
+                        return ResponseBuilder.Ask($"Ich habe {(waren.Length == 1 ? "einen" : $"{waren.Length}")} Artikel für {suchbegriff} gefunden. Möchtest du {ware}?", new Reprompt()
                         {
                             OutputSpeech = new PlainTextOutputSpeech()
                             {
@@ -141,7 +141,7 @@ namespace BillaSkill.Controllers
                     case "AMAZON.StopIntent":
                     case "AMAZON.CancelIntent":
                         await sucheRepository.DeleteSucheAsync(input.Session.SessionId);
-                        return ResponseBuilder.Empty();
+                        return ResponseBuilder.Tell("Wird abgebrochen.");
                     case "AMAZON.HelpIntent":
                         return ResponseBuilder.Empty();
                     default:
