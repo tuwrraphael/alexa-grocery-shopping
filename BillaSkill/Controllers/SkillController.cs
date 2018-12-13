@@ -120,12 +120,25 @@ namespace BillaSkill.Controllers
                         var warenkorb = await warenkorbRepository.GetForUserAsync(input.Session.User.UserId);
                         if (null == warenkorb || 0 == warenkorb.Waren.Length)
                         {
-                            return ResponseBuilder.Tell("Du hast nichts in deinem Warenkorb.");
+                            return ResponseBuilder.Ask($"Du hast nichts in deinem Warenkorb.", new Reprompt()
+                            {
+                                OutputSpeech = new PlainTextOutputSpeech()
+                                {
+                                    Text = $"Was kann ich für dich tun?"
+                                }
+                            });
                         }
                         else
                         {
-                            return ResponseBuilder.Tell($"In deinem Warenkorb ist {warenFormatter.Format(warenkorb)}. Der Gesamtpreis ist {CalcPrice(warenkorb)}€.");
+                            return ResponseBuilder.Ask($"In deinem Warenkorb ist {warenFormatter.Format(warenkorb)}. Der Gesamtpreis ist {CalcPrice(warenkorb)}€.", new Reprompt()
+                            {
+                                OutputSpeech = new PlainTextOutputSpeech()
+                                {
+                                    Text = $"Was kann ich für dich tun?"
+                                }
+                            });
                         }
+
                     case "WarenkorbErstellen":
                         var korb = await warenkorbRepository.GetForUserAsync(input.Session.User.UserId);
                         if (null == korb || 0 == korb.Waren.Length)

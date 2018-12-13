@@ -10,6 +10,5 @@
 	git checkout ./.ask/config
 }
 cd ../Skill
-Deploy -Profile andreas -Skillname billa
-Deploy -Profile default -Skillname Billa
+Deploy -Profile andi -Skillname billa
 cd ../Script

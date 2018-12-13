@@ -1,5 +1,5 @@
 {
-  "skillManifest": {
+  "manifest": {
     "publishingInformation": {
       "locales": {
         "de-DE": {
@@ -9,8 +9,7 @@
       "isAvailableWorldwide": true
     },
     "apis": {
-      "custom": {
-      }
+      "custom": {}
     },
     "manifestVersion": "1.0"
   }
